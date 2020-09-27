@@ -1,0 +1,28 @@
+<div class="loan-form-class">
+    <form class="form-class" [formGroup]='addLoanForm'>
+        <div class="col-sm-12">
+            <mat-form-field >
+                <input matInput type="text" required formControlName="borrowerName" type="text" class="form-control" id="borrower-name" placeholder="Borrower Name">
+              </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+            <mat-form-field >
+                <input matInput type="number"  required formControlName="repaymentAmount" type="text" class="form-control" id="repayment-amount" placeholder="Repayment amount">
+              </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+          <mat-form-field >
+            <input matInput type="number"  required formControlName="fundingAmount" type="text" class="form-control" id="funding-amount" placeholder="Funding amount">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+            <button type="submit" class="submit-button" (click)="addLoan()" [disabled]="addLoanForm.invalid">Add Loan</button>
+        </div>
+        <div id="form-error-div" class="col-sm-12" *ngIf="incorrectSums">
+            Funding Amount should be smaller than Repayment amount!
+        </div>
+        <div id="add-message-div" class="col-sm-12" *ngIf="addedLoan">
+            Loan succesfully added!
+        </div>
+      </form>
+</div>

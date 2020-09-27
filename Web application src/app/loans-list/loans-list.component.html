@@ -1,0 +1,49 @@
+<div class="loans-panel">
+    <div id="loans-list-title" class="col-sm-12">
+        Loans List
+        <span class="material-icons" style="cursor: pointer;" (click)="refreshList()">
+            refresh
+        </span>
+    </div>
+    <div class="list-div" *ngIf="isPrintingLoans">
+        <div *ngFor="let loan of loansList" >
+            <div class="d-flex">
+                <div id="loan-div" class="col-sm-7">
+                    Borrower Name: 
+                    <div style="color: #D79922">
+                        {{loan.borrower_name}}
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <button id='details-button' (click)="loanDetails(loan.id)">
+                        See Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!isPrintingLoans">
+        <div class="d-flex flex-column col-sm-6 mt-4 align-content-center">
+            <div class="loan-details-div mt-3">
+                Borrower name: {{foundLoan.borrower_name}}
+            </div>
+            <div class="loan-details-div mt-3">
+                Repayment amount: {{foundLoan.repayment_amount}}
+            </div>
+            <div class="loan-details-div mt-3">
+                Funding amount: {{foundLoan.funding_amount}}
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <button class=" delete-button" (click)="deleteLoan()">
+                Delete Loan
+            </button>
+        </div>
+        <div class="back-option-div col-sm-12" (click)="backToLoans()">
+            <span class="material-icons">
+                keyboard_backspace
+            </span>
+            Back to Loans List
+        </div>
+    </div>
+</div>
